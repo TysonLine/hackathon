@@ -2,15 +2,18 @@
   "name": "uottahack7",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "mongo": "node tests/mongoTest.js"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
     "groq-sdk": "^0.12.0",
+    "mongodb": "^6.12.0",
     "next": "15.1.5",
     "openai": "^4.79.1",
     "pdf-lib": "^1.17.1",
