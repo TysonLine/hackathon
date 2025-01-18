@@ -18,4 +18,7 @@ export default {
   plugins: [
     daisyui
   ],
+  daisyui: {
+    themes: ['bumblebee'],
+  },
 } satisfies Config;
