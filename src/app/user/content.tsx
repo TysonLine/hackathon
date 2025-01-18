@@ -1,6 +1,6 @@
 import React from "react";
 import Profile from "./profile";
-import Jobs from "./jobs";
+import Applications from "../components/applications";
 
 type ContentProps = {
     children?: React.ReactNode;
@@ -13,7 +13,7 @@ export default function Content(props: ContentProps) {
         <div className="w-[60%] h-[80%] rounded-sm bg-white shadow-md p-12 text-black">
             {props.children}
             {props.menuState === "profile" && <Profile />}
-            {props.menuState === "jobs" && <Jobs />}
+            {props.menuState === "jobs" && <Applications />}
             {props.menuState === "settings" && (
                 <div>settings not implemented</div>
             )}
