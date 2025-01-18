@@ -12,20 +12,36 @@ const UploadResume = () => {
   const [status, setStatus] = useState<string | null>(null);
 
   // Whenever file is uploaded, we set the current file to file
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    
+    // If the file exists, we set the current File to the uploaded one
     if (event.target.files && event.target.files[0]) {
       const uploadedFile = event.target.files[0];
       setFile(uploadedFile);
 
-      pdfToText(uploadedFile)
-        .then(text => {
-          console.log(text);
-          setText(text);
-        })
-        .catch(error => {
-          console.error("Failed to extract text from pdf", error);
-          setStatus("Failed to extract text from pdf");
+      // We take the text from PDF and convert it into text
+      try {
+        const text = await pdfToText(uploadedFile);
+        console.log(text);
+        setText(text);
+
+        // Send the extracted text to the /api/generate-embeddings endpoint
+        const res = await fetch('/api/generate-embeddings', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ text }),
         });
+
+        const data = await res.json();
+  
+        console.log("Received ", data);
+
+      } catch (error) {
+        console.error(error);
+   
+      }
     }
   };
 
