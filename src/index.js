@@ -3,7 +3,7 @@ import http from "http";
 import bodyParser from "body-parser";
 import app from './App';
 
-const port = 9001;
+const port = 9003;
 
 function initializeExpress() {
     const expressApp = express();
