@@ -7,3 +7,11 @@ export type JobPost = {
     jobType?: string;
     description: string;
 }
+
+export type Application = {
+    id: string;
+    job: JobPost;
+    date: string;
+    views: number;
+    status: string;
+}
