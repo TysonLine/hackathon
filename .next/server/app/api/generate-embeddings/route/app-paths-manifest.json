@@ -1,0 +1,3 @@
+{
+  "/api/generate-embeddings/route": "app/api/generate-embeddings/route.js"
+}
