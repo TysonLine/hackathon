@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 //import axios from 'axios';
 import { JobPost } from '../types';
 import Board from '../components/board';
+import NavBar from '../components/NavBar';
 
 export default function JobBoard() {
   const [jobs, setJobs] = useState<JobPost[]>([
@@ -60,8 +61,7 @@ export default function JobBoard() {
     
 
   return (<>
-
-    {/* nav bar */}
+    <NavBar userType="student" />
     <div className="flex flex-col h-screen bg-orange-400 items-center">
       <div className='w-[80vw] flex flex-col items-center'>
         <div className='flex flex-row mt-20 mb-2 items-center gap-2' >
