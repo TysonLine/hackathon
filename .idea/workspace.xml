@@ -4,47 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a70f8521-dc6a-4800-a857-ac8db4b24a47" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/api/solace/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/solace/config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/solace/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/solace/messaging.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/testSolace.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/app-build-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/.next/app-build-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/build-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/.next/build-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/.next/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/server/app-paths-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/app-paths-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/server/app/page_client-reference-manifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/app/page_client-reference-manifest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/server/chunks/ssr/[root of the server]__51f148._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/chunks/ssr/[root of the server]__51f148._.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/server/chunks/ssr/[root of the server]__8ebb6d._.css" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/chunks/ssr/[root of the server]__8ebb6d._.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/server/chunks/ssr/[root of the server]__8ebb6d._.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/chunks/ssr/[root of the server]__8ebb6d._.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/server/chunks/ssr/_547559._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/chunks/ssr/_547559._.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/server/chunks/ssr/node_modules_36e229._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/chunks/ssr/node_modules_36e229._.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/server/chunks/ssr/node_modules_ce97a5._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/chunks/ssr/node_modules_ce97a5._.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/server/chunks/ssr/node_modules_next_dist_97f32f._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/chunks/ssr/node_modules_next_dist_97f32f._.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/server/chunks/ssr/node_modules_next_dist_client_components_forbidden-error_b4e556.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/chunks/ssr/node_modules_next_dist_client_components_forbidden-error_b4e556.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/server/chunks/ssr/node_modules_next_dist_client_components_unauthorized-error_d758e6.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/chunks/ssr/node_modules_next_dist_client_components_unauthorized-error_d758e6.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/server/chunks/ssr/src_app_896cde._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/chunks/ssr/src_app_896cde._.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/server/chunks/ssr/src_app_globals_b52d8e.css" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/chunks/ssr/src_app_globals_b52d8e.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/server/chunks/ssr/src_app_globals_b52d8e.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/chunks/ssr/src_app_globals_b52d8e.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/server/middleware-build-manifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/middleware-build-manifest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/server/next-font-manifest.js" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/next-font-manifest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/server/next-font-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/.next/server/next-font-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/static/chunks/[root of the server]__8ebb6d._.css" beforeDir="false" afterPath="$PROJECT_DIR$/.next/static/chunks/[root of the server]__8ebb6d._.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/static/chunks/[root of the server]__8ebb6d._.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/static/chunks/[root of the server]__8ebb6d._.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/static/chunks/_a91c21._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/static/chunks/_a91c21._.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/static/chunks/node_modules_@swc_helpers_cjs_00636a._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/static/chunks/node_modules_@swc_helpers_cjs_00636a._.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/static/chunks/node_modules_next_dist_4bb10e._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/static/chunks/node_modules_next_dist_4bb10e._.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/static/chunks/node_modules_next_dist_client_523921._.js" beforeDir="false" afterPath="$PROJECT_DIR$/.next/static/chunks/node_modules_next_dist_client_523921._.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/static/chunks/node_modules_next_dist_client_523921._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/static/chunks/node_modules_next_dist_client_523921._.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/static/chunks/node_modules_next_dist_compiled_107ce8._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/static/chunks/node_modules_next_dist_compiled_107ce8._.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc._.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc._.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/static/chunks/src_app_globals_b52d8e.css" beforeDir="false" afterPath="$PROJECT_DIR$/.next/static/chunks/src_app_globals_b52d8e.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/static/chunks/src_app_globals_b52d8e.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/.next/static/chunks/src_app_globals_b52d8e.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.next/trace" beforeDir="false" afterPath="$PROJECT_DIR$/.next/trace" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="a70f8521-dc6a-4800-a857-ac8db4b24a47" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -85,12 +45,15 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Node.js.MongoDBAPI.js.executor": "Run",
+    "Node.js.db.js.executor": "Run",
+    "Node.js.mongoTest.js.executor": "Run",
     "Node.js.mqttTest.js.executor": "Run",
     "Node.js.publish.js.executor": "Run",
     "Node.js.testSolace.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Tyson",
+    "git-widget-placeholder": "Tyson2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -115,7 +78,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1737217574798</updated>
-      <workItem from="1737217575837" duration="11098000" />
+      <workItem from="1737217575837" duration="15106000" />
     </task>
     <servers />
   </component>
