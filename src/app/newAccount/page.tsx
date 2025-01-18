@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "../components/card";
 
+
 //todo: form validation for confirm password, passwords must match
 
 export default function Index() {
