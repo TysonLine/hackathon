@@ -23,9 +23,25 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 ;
 const UploadResume = ()=>{
     const [file, setFile] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
+    //Actual Pdf Text to be parsed
+    const [text, setText] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
+    //If Pdf is slected or not
+    const [status, setStatus] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
+    //Whenever file is uploaded, we set the current file to file
     const handleFileChange = (event)=>{
         if (event.target.files && event.target.files[0]) {
             setFile(event.target.files[0]);
+        }
+    };
+    //To Parse and Make Embedding of PDF
+    const handleUpload = async ()=>{
+        if (!file) {
+            setStatus('No file selected.');
+            return;
+        }
+        try {} catch (error) {
+            console.error('Error extracting text:', error);
+            setStatus('Failed to extract text from the file.');
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -36,7 +52,7 @@ const UploadResume = ()=>{
                 onChange: handleFileChange
             }, void 0, false, {
                 fileName: "[project]/src/app/components/uploadResume.tsx",
-                lineNumber: 16,
+                lineNumber: 43,
                 columnNumber: 7
             }, this),
             file && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -46,13 +62,40 @@ const UploadResume = ()=>{
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/components/uploadResume.tsx",
-                lineNumber: 17,
+                lineNumber: 44,
                 columnNumber: 16
-            }, this)
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                onClick: handleUpload,
+                disabled: !file,
+                children: "Extract Text"
+            }, void 0, false, {
+                fileName: "[project]/src/app/components/uploadResume.tsx",
+                lineNumber: 45,
+                columnNumber: 7
+            }, this),
+            status && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                children: status
+            }, void 0, false, {
+                fileName: "[project]/src/app/components/uploadResume.tsx",
+                lineNumber: 48,
+                columnNumber: 18
+            }, this),
+            text && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("pre", {
+                children: [
+                    text.substring(0, 500),
+                    "..."
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/app/components/uploadResume.tsx",
+                lineNumber: 49,
+                columnNumber: 16
+            }, this),
+            " "
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/components/uploadResume.tsx",
-        lineNumber: 15,
+        lineNumber: 42,
         columnNumber: 5
     }, this);
 };
