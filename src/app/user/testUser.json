@@ -1,0 +1,29 @@
+{
+    "Username": "Jack Ma123",
+    "Name": "Jack Ma",
+    "Password": "string",
+    "isEmployer": true,
+    "Jobs": [
+        {
+            "jobId": 23423423422,
+            "jobName": "Software Engineer",
+            "companyName": "Google",
+            "Status": "good"
+        },
+        {
+            "jobId": 14523,
+            "jobName": "Software Engineer",
+            "companyName": "Amazon",
+
+            "Status": "bad"
+        },
+        {
+            "jobId": 234823,
+            "jobName": "Software Engineer",
+            "companyName": "Google",
+
+            "Status": "unread"
+        }
+    ],
+    "resumePDF": "string"
+}
