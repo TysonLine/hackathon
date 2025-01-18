@@ -1,12 +1,15 @@
 "use client";
+import NavBar from "../components/NavBar";
 import Content from "./content";
 import { useState } from "react";
 
 export default function page() {
     const [menuState, setMenuState] = useState("profile");
 
-    return (
+    return (<>        
         <div className="w-screen h-screen flex flex-col relative">
+            
+            <NavBar userType="student" />
             <div className="bg-gradient-to-br from-[#FF7621] to-[#FFAF02] w-screen h-[40%] absolute top-0 left-0"></div>
             <div className="bg-white w-screen h-[60%] absolute bottom-0 left-0"></div>
             <div className="absolute inset-0 flex flex-col items-center gap-4  justify-end shadow">
@@ -36,5 +39,5 @@ export default function page() {
                 <Content menuState={menuState} />
             </div>
         </div>
-    );
+        </>);
 }

@@ -42,12 +42,10 @@ const NavBar: FC<NavBarProps> = ({ userType }) => {
             </ul>
             
           </div>
-          <a href="/profile">
-            <img
-              src="/path/to/profile-picture.jpg"
-              alt="🫠"
-              className="w-8 h-6 rounded-full cursor-pointer"
-            />
+          <a href="/user">
+            <div className="w-8 h-6 rounded-full cursor-pointer">
+              🫠
+            </div>
           </a>
         </div>
       </nav>
