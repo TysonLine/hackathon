@@ -5,7 +5,7 @@ import OpenAI from 'openai';
 // Load environment variables
 dotenv.config();
 
-const openaiKey = process.env.NEXT_PUBLIC_OPEN_AI_API_KEY;
+const openaiKey = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
 if (!openaiKey) {
   console.error('OpenAI API Key is missing. Please check your .env file.');
   process.exit(1);

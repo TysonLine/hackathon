@@ -11,6 +11,7 @@
     "mongo": "node tests/mongoTest.js"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.47.16",
     "dotenv": "^16.4.7",
     "groq-sdk": "^0.12.0",
     "mongodb": "^6.12.0",

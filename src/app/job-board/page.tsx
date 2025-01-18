@@ -27,7 +27,17 @@ export default function JobBoard() {
       company: 'DataGenix',
       description: 'Analyze complex datasets to drive business insights.',
     },
+    {
+      id: '4',
+      position: 'Machine Learning Engineer',
+      company: 'DataGenix',
+      description: 'Use TensorFlow, Machine Learning, AI, RAG and Deep Learning stuff. Very AI Position yes',
+    },
   ]);
+
+  
+
+
 
   const [searchTerm, setSearchTerm] = useState<string>('');
 
