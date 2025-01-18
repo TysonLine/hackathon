@@ -5,16 +5,24 @@
     "isEmployer": true,
     "Jobs": [
         {
-            "jobId": 1,
-            "Status": "string"
+            "jobId": 23423423422,
+            "jobName": "Software Engineer",
+            "companyName": "Google",
+            "Status": "good"
         },
         {
-            "jobId": 2,
-            "Status": "string"
+            "jobId": 14523,
+            "jobName": "Software Engineer",
+            "companyName": "Amazon",
+
+            "Status": "bad"
         },
         {
-            "jobId": 3,
-            "Status": "string"
+            "jobId": 234823,
+            "jobName": "Software Engineer",
+            "companyName": "Google",
+
+            "Status": "unread"
         }
     ],
     "resumePDF": "string"
