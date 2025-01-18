@@ -7,7 +7,7 @@ interface NavBarProps {
 
 const NavBar: FC<NavBarProps> = ({ userType }) => {
     return (
-      <nav className="max-w-screen min-w-screen flex items-center justify-between bg-white p-2 px-4 shadow-md text-gray-700">
+      <nav className="max-w-screen min-w-screen flex items-center justify-between bg-white p-2 px-4 shadow-md text-gray-700 relative z-50">
         {/* Logo and User Type */}
         <div className="flex items-center">
           <a href="/" className="text-lg font-bold mr-4">Employ Me!</a>
