@@ -1,0 +1,26 @@
+import { FC } from 'react'
+import { JobPost } from '../types';
+
+interface BoardPostProps {
+  className?: string;
+  job: JobPost;
+  selected: boolean;
+  setSelectedJob: React.Dispatch<React.SetStateAction<JobPost | null>>;
+}
+
+const BoardPost: FC<BoardPostProps> = ({ job, selected, className, setSelectedJob }) => {
+  return (
+    <div
+    key={job.id}
+    className={`${className} p-2 border shadow-sm rounded-md mb-2 cursor-pointer flex flex-row justify-between text-wrap items-center ${
+      selected ? 'bg-gray-200' : 'bg-white'
+    }`}
+    onClick={() => setSelectedJob(job)}
+  >
+    <h3 className="text-gray-600 font-semibold">{job.position}</h3>
+    <p className='text-gray-400 text-sm'>{job.company}</p>
+  </div>
+  )
+}
+
+export default BoardPost
