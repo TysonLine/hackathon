@@ -20,5 +20,5 @@ export default {
   ],
   daisyui: {
     themes: ['bumblebee'],
-  }
+  },
 } satisfies Config;
