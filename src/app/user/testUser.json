@@ -1,0 +1,21 @@
+{
+    "Username": "Jack Ma123",
+    "Name": "Jack Ma",
+    "Password": "string",
+    "isEmployer": true,
+    "Jobs": [
+        {
+            "jobId": 1,
+            "Status": "string"
+        },
+        {
+            "jobId": 2,
+            "Status": "string"
+        },
+        {
+            "jobId": 3,
+            "Status": "string"
+        }
+    ],
+    "resumePDF": "string"
+}

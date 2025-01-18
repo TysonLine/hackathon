@@ -20,6 +20,7 @@ export default function page() {
                             onClick={() => setMenuState("profile")}>
                             Profile
                         </button>
+                        {/* this displays jobs posted if it is employer account */}
                         <button
                             className="btn btn-xs rounded-sm bg-white"
                             onClick={() => setMenuState("jobs")}>

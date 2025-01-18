@@ -1,0 +1,21 @@
+{
+    "Username": "kbasdf",
+    "Name": "Kinaxis",
+    "Password": "string",
+    "isEmployer": true,
+    "Jobs": [
+        {
+            "jobId": 1,
+            "Applicants": []
+        },
+        {
+            "jobId": 2,
+            "Applicants": []
+        },
+        {
+            "jobId": 3,
+            "Applicants": []
+        }
+    ],
+    "resumePDF": "string"
+}
