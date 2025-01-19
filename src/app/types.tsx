@@ -6,13 +6,9 @@ export type JobPost = {
     location: string;
     jobType: string;
     description: string;
-
-    applications?: Application[];
     match: number | null;
-};
-
     applications: string[];
-}
+};
 
 
 export type Application = {
