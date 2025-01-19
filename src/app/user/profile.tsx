@@ -2,8 +2,18 @@ import React from "react";
 import testUser from "./testUser.json";
 import PdfViewer from "../components/pdfViewer";
 import UploadResume from "../components/uploadResume";
+import { useAppContext } from "../../context/AppContext";
 
 export default function profile() {
+    const {
+        state,
+        setUserName,
+        setName,
+        setEmail,
+        setGender,
+        setResume,
+        setDescription,
+    } = useAppContext();
     return (
         <div className="flex flex-col gap-4">
             <h1 className="text-black font-semibold text-4xl ">
@@ -28,7 +38,7 @@ export default function profile() {
                             </div>
                             <input
                                 type="text"
-                                placeholder="Type here"
+                                value={state.Name}
                                 className="input input-bordered input-sm w-full max-w-xs"
                             />
                         </label>
@@ -38,17 +48,17 @@ export default function profile() {
                             </div>
                             <input
                                 type="text"
-                                placeholder="Type here"
+                                value={state.Email}
                                 className="input input-bordered input-sm w-full max-w-xs"
                             />
                         </label>
                         <label className="form-control w-full max-w-xs">
                             <div className="label">
-                                <span className="label-text">Name</span>
+                                <span className="label-text">Gender</span>
                             </div>
                             <input
                                 type="text"
-                                placeholder="Type here"
+                                value={state.gender}
                                 className="input input-bordered input-sm w-full max-w-xs"
                             />
                         </label>
@@ -58,7 +68,7 @@ export default function profile() {
                             </div>
                             <textarea
                                 className="textarea textarea-bordered max-w-xs"
-                                placeholder="Bio"></textarea>
+                                value={state.description}></textarea>
                         </label>
 
                         <UploadResume />
