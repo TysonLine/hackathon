@@ -24,7 +24,7 @@ const supabase = createClient(url, privateKey);
 async function generateEmbedding(description: string): Promise<number[] | null> {
   if (!description) return null; // Skip jobs with no description
 
-  const apiUrl = 'http://localhost:3001/api/generate-embeddings';
+  const apiUrl = 'http://localhost:3003/api/generate-embeddings';
   try {
     const res = await fetch(apiUrl, {
       method: 'POST',
@@ -85,11 +85,12 @@ export async function addJobPost(newJob: JobPost) {
     console.log(`Successfully inserted job post with ID: ${result.insertedId}`);
   } catch (mongoError: any) {
     console.error("Error adding job to MongoDB:", mongoError);
+    return { success: false, error: "Error" };
   } finally {
     await client.close();
       console.log("MongoDB connection closed.");
       return { success: true };
     }
-    return { success: false, error: "Error" };
+    
     
 }
