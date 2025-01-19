@@ -10,7 +10,6 @@ export type JobPost = {
     applications: string[];
 };
 
-
 export type Application = {
     id: string;
     jobId: string;

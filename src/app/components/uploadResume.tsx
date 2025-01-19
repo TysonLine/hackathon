@@ -64,6 +64,12 @@ const UploadResume = () => {
 
 
         /** Supabase inserting starts here **/
+
+        const { error: deleteError } = await supabase
+        .from('candidates')
+        .delete()
+        .neq('name', null); 
+
         const data = {
           name: name, // User's name
             resume_text: text, // Extracted text
@@ -97,35 +103,24 @@ const UploadResume = () => {
   };
 
 
-    return (
-      <div className="flex flex-col items-center space-y-4">
-        {/* Input for name */}
-        <input
-          type="text"
-          placeholder="Enter your name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="input input-bordered"
-        />
-  
-        {/* Input for file upload */}
-        <input
-          type="file"
-          accept="application/pdf"
-          onChange={handleFileChange}
-          className="input input-bordered"
-        />
-  
-        {/* File info */}
-        {file && <p>Uploaded file: {file.name}</p>}
-  
-        {/* Resume text preview */}
-        {text && <pre className="text-left bg-gray-100 p-4 rounded">{text}</pre>}
-  
-        {/* Status messages */}
-        {status && <p className="text-center text-sm text-gray-700">{status}</p>}
-      </div>
-  );
+  return (
+    <div className="flex flex-col items-start gap-2 w-full">
+        <label className="flex items-center justify-center bg-orange-500 text-white font-bold py-3 px-6 rounded-md cursor-pointer hover:bg-orange-600 w-full">
+            <input
+                type="file"
+                accept="application/pdf"
+                onChange={handleFileChange}
+                className="hidden" // Hide the default file input
+            />
+            Upload Resume
+        </label>
+        {file && (
+            <p className="text-xs text-gray-500 mt-1">
+                {file.name}
+            </p>
+        )}
+    </div>
+);
 };
 
 export default UploadResume;
