@@ -98,8 +98,13 @@ export default function JobBoard() {
 
   return (
     <>
+      <div className="bg-gradient-to-br from-[#FF7621] to-[#FFAF02] w-screen h-[40%] absolute top-0 left-0"></div>
+      <div className="bg-white w-screen h-[60%] absolute bottom-0 left-0"></div>
+      
       <NavBar userType="student" />
-      <div className="flex flex-col h-screen bg-orange-400 items-center">
+      <div className="absolute inset-0 flex flex-col h-screen items-center w-screen">
+
+
         <div className='w-[80vw] flex flex-col items-center'>
           <div className='flex flex-row mt-20 mb-2 items-center gap-2' >
             <input

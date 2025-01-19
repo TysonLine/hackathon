@@ -17,7 +17,7 @@ const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_API_KEY!
 );
 
-export default function EmployerViewPosting(props: Application) {
+export default function EmployerViewPosting(props) {
     const [resumeText, setResumeText] = useState<string | null>(null);
     const [summary, setSummary] = useState<string | null>(null);
     const [status, setStatus] = useState<string>("Pending");
@@ -25,23 +25,33 @@ export default function EmployerViewPosting(props: Application) {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
     
-        try {
-          const response = await fetch('/api/update-status', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(props.id),
-          });
+        const handleStatusChange = async (event) => {
+            const newStatus = event.target.value;
+            setStatus(newStatus);
     
-          if (!response.ok) {
-            setStatus('Failed to update status');
-          }
-        } catch (error) {
-          console.error('Error updating status:', error);
-          setStatus('An error occurred.');
-        }
-      };
+            try {
+                const res = await fetch(`/api/update-status`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ appId: props.app.id, newStatus }),
+                });
+    
+                if (!res.ok) {
+                    throw new Error(`HTTP error! Status: ${res.status}`);
+                }
+    
+                const data = await res.json();
+                if (!data.success) {
+                    throw new Error(data.error);
+                }
+    
+                console.log("Status updated successfully:", data.application);
+            } catch (error) {
+                console.error("Error updating status:", error);
+            }
+        };
 
     // Function to fetch the candidate's resume_text
     async function fetchCandidate() {
@@ -127,11 +137,11 @@ export default function EmployerViewPosting(props: Application) {
                 </div>
 
                 {/* user info */}
-                <p className="font-semibold">{props.user.name}</p>
-                <p>{props.user.email}</p>
-                <p>{props.date}</p>
-                <p>{props.user.gender}</p>
-                <p>{props.user.description}</p>
+                <p className="font-semibold">{props.app.user.name}</p>
+                <p>{props.app.user.email}</p>
+                <p>{props.app.date}</p>
+                <p>{props.app.user.gender}</p>
+                <p>{props.app.user.description}</p>
 
                 {/* update status */}
                 <form className="flex flex-row gap-4" onSubmit={handleSubmit}>

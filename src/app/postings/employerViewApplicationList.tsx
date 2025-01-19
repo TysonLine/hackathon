@@ -5,6 +5,7 @@ type AppList = {
     applications: Application[];
     stateSetter: React.Dispatch<React.SetStateAction<string>>;
     selectedJob: Job;
+    setSelectedApp: React.Dispatch<React.SetStateAction<Application | undefined>>;
 };
 
 export default function employerViewApplicationList(props: AppList) {
@@ -12,6 +13,7 @@ export default function employerViewApplicationList(props: AppList) {
     const selectedJob = props.selectedJob;
 
     const handleViewDetails = async (appId: string) => {
+        props.setSelectedApp(apps.find((app) => app.id === appId));
         props.stateSetter("viewApp")
         try {
             const res = await fetch(`/api/incrementViews`, {

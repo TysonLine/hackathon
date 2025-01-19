@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import EmployerViewLPosts from "./employerViewLPosts";
 import EmployerViewApplicationList from "./employerViewApplicationList";
 import EmployerViewApplication from "./employerViewApplication";
+import { Application } from "../types";
 
 const page = () => {
     const [jobs, setJobs] = useState([]);
@@ -53,6 +54,7 @@ const page = () => {
 
     const [mode, setMode] = useState("posts");
     const [selectedJob, setSelectedJob] = useState(null);
+    const [selectedApp, setSelectedApp] = useState<Application>(null);
 
     return (
         <div className="w-screen flex h-screen flex-col">
@@ -74,11 +76,12 @@ const page = () => {
                             applications={apps}
                             selectedJob={selectedJob}
                             stateSetter={setMode}
+                            setSelectedApp={setSelectedApp}
                         />
                     ) : // use filter to see the applications that has this job id
                     null}
                     {mode === "viewApp" ? (
-                        <EmployerViewApplication stateSetter={setMode} />
+                        <EmployerViewApplication stateSetter={setMode} app={selectedApp.id} />
                     ) : null}
                 </div>
             </div>

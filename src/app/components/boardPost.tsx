@@ -12,7 +12,7 @@ const BoardPost: FC<BoardPostProps> = ({ job, selected, className, setSelectedJo
   return (
     <div
     key={job.id}
-    className={`${className} p-2 shadow-sm mb-2 cursor-pointer flex flex-row justify-between text-wrap items-center ${
+    className={`${className} p-2 shadow-sm mb-2 cursor-pointer flex flex-row justify-between text-wrap items-center rounded-md ${
       selected ? 'bg-gray-200 hover:bg-gray-200' : 'bg-white hover:bg-gray-100'
     }`}
     onClick={() => setSelectedJob(job)}
