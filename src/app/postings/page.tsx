@@ -1,12 +1,37 @@
 "use client";
 import NavBar from "../components/NavBar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import EmployerViewLPosts from "./employerViewLPosts";
 import EmployerViewApplicationList from "./employerViewApplicationList";
 import EmployerViewApplication from "./employerViewApplication";
 
 const page = () => {
+    const [jobs, setJobs] = useState([]);
+
+    async function fetchJobs() {
+        try {
+            const res = await fetch("/api/postsAPI", {
+                method: "GET",
+            });
+
+            if (!res.ok) {
+                throw new Error(`HTTP error! Status: ${res.status}`);
+            }
+
+            const data = await res.json();
+            setJobs(data);
+            console.log("Fetched Data asdf:", data); // Handle the fetched data as needed
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
+
+    useEffect(() => {
+        fetchJobs();
+    }, []);
+
     const [mode, setMode] = useState("posts");
+
     return (
         <div className="w-screen flex h-screen flex-col">
             <NavBar userType="employer" />
@@ -15,7 +40,7 @@ const page = () => {
             <div className="absolute inset-0 flex flex-col items-center gap-4 justify-end shadow">
                 <div className="overflow-y-scroll w-fit h-max overflow-hidden shadow-md rounded-t-2xl">
                     {mode === "posts" ? (
-                        <EmployerViewLPosts stateSetter={setMode} />
+                        <EmployerViewLPosts stateSetter={setMode} jobs={jobs} />
                     ) : null}
                     {mode === "viewAppList" ? (
                         <EmployerViewApplicationList applications={[]} />
