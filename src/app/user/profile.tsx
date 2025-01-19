@@ -1,6 +1,7 @@
 import React from "react";
 import testUser from "./testUser.json";
 import PdfViewer from "../components/pdfViewer";
+import UploadResume from "../components/uploadResume";
 
 export default function profile() {
     return (
@@ -60,9 +61,8 @@ export default function profile() {
                                 placeholder="Bio"></textarea>
                         </label>
 
-                        <button className="btn btn-primary flex-grow-0 flex-shrink-0 w-24 mt-2">
-                            Upload resume
-                        </button>
+                        
+                        <UploadResume />
                     </form>
                 </div>
             </div>

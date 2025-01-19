@@ -7,6 +7,15 @@ import { JobPost } from '../types';
 import Board from '../components/board';
 import NavBar from '../components/NavBar';
 
+import { createClient } from '@supabase/supabase-js';
+
+// Initialize Supabase client
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_API_KEY!
+);
+
+
 export default function JobBoard() {
   const [jobs, setJobs] = useState<JobPost[]>([
     {
@@ -34,6 +43,10 @@ export default function JobBoard() {
       description: 'Use TensorFlow, Machine Learning, AI, RAG and Deep Learning stuff. Very AI Position yes',
     },
   ]);
+
+  const [matchedJobs, setMatchedJobs] = useState<JobPost[]>([]);
+
+
 
   
 
@@ -82,13 +95,16 @@ export default function JobBoard() {
             value={searchTerm}
             onChange={handleSearch}
           />
+
+
+          {/*Will take the only entry in Supabase and Match Jobs the best it can */}
           <button className='btn'>
             Personalize
           </button>
         </div>
         
         {/* Job Board */}
-        <Board jobs={filteredJobs} />
+        <Board jobs={matchedJobs.length > 0 ? matchedJobs: filteredJobs} />
 
       </div>
       

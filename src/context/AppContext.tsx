@@ -1,5 +1,5 @@
 // src/context/AppContext.tsx
-
+'use client';
 import React, { createContext, useState, ReactNode, useContext } from "react";
 import { JobPost, Application } from "@/app/types";
 
