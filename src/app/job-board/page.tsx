@@ -18,47 +18,25 @@ const supabase = createClient(
 
 export default function JobBoard() {
   const [matchedJobs, setMatchedJobs] = useState<JobPost[]>([]);
-
-
-
   const [personalized, setPersonalized] = useState<boolean>(false);
-
   const [searchTerm, setSearchTerm] = useState<string>('');
+  const [jobs, setJobs] = useState<JobPost[]>([]);
 
- 
-  const [jobs, setJobs] = useState<JobPost[]>([
-    {
-      id: '1',
-      job_title: 'Software Engineer',
-      company: 'TechCorp',
-      description: 'Develop and maintain software applications.',
-      match: null
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const response = await fetch('/api/postsAPI');
+        const data = await response.json();
+        setJobs(data);
+        console.log('Fetched job posts:', data);
+        console.log('jobs:', jobs);
+      } catch (error) {
+        console.error('Error fetching job posts:', error);
+      }
+    };
 
-    },
-    {
-      id: '2',
-      job_title: 'Product Manager',
-      company: 'Innovatech',
-      description: 'Lead product development and strategy.',
-      match: null
-    },
-    {
-      id: '3',
-      job_title: 'Data Scientist',
-      company: 'DataGenix',
-      description: 'Analyze complex datasets to drive business insights.',
-      match: null
-    },
-    {
-      id: '4',
-      job_title: 'Machine Learning Engineer',
-      company: 'DataGenix',
-      description: 'Use TensorFlow, Machine Learning, AI, RAG and Deep Learning stuff. Very AI Position yes',
-      match: null
-    },
-  ]);
-
-  
+    fetchJobs();
+  }, []);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
