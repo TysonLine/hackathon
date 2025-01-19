@@ -1,6 +1,7 @@
 import { FC, useState } from 'react'
 import { JobPost } from '../types';
 import BoardPost from './boardPost';
+import { useAppContext } from '@/context/AppContext';
 
 interface BoardProps {
   className?: string;
@@ -9,6 +10,56 @@ interface BoardProps {
 
 const Board: FC<BoardProps> = ({ className, jobs  }) => {
   const [selectedJob, setSelectedJob] = useState<JobPost | null>(null);
+  const { state } = useAppContext();
+
+  const handleApply = async (jobId: string) => {
+    if (!useAppContext().state.Name) {
+      alert('You need to log in to apply for jobs.');
+      return;
+    }
+
+    const user = {
+      id: state.userName,
+      name: state.Name,
+      email: state.Email,
+      gender: state.gender,
+      isEmployer: state.isEmployer,
+      description: state.description,
+      resume: state.resume,
+    };
+
+    const newApplication = {
+      id: crypto.randomUUID(),
+      jobId: jobId,
+      date: new Date().toISOString(),
+      views: 0,
+      status: 'Pending',
+      user,
+    };
+
+    try {
+      const response = await fetch('/api/apply-to-job', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newApplication),
+      });
+
+      if (response.ok) {
+        const { success } = await response.json();
+        if (success) {
+          alert('Application submitted successfully!');
+        } else {
+          alert('Failed to submit the application.');
+        }
+      } else {
+        alert('Error occurred while applying for the job.');
+      }
+    } catch (error) {
+      console.error('Error applying for job:', error);
+    }
+  };
 
   return (
     <div className='w-full h-[75vh] flex flex-row shadow-md rounded-xl'>
@@ -37,7 +88,7 @@ const Board: FC<BoardProps> = ({ className, jobs  }) => {
               </p>
             )}
               <p className="text-gray-600 my-4">{selectedJob.description}</p>
-              <button className="btn btn-primary">
+              <button onClick={() => handleApply(selectedJob.id)} className="btn btn-primary">
                 Apply
               </button>
             </div>
