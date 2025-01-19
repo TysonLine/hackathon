@@ -4,28 +4,13 @@ import { useState, useEffect } from "react";
 import EmployerViewLPosts from "./employerViewLPosts";
 import EmployerViewApplicationList from "./employerViewApplicationList";
 import EmployerViewApplication from "./employerViewApplication";
+import fetchJobs from "@/app/postings/fetchJobs";
 
 const page = () => {
     const [jobs, setJobs] = useState();
 
-    async function fetchPosts() {
-        console.log("fetching postings");
-        try {
-            const res = await fetch("/api/postsAPI", {
-                method: "GET",
-            });
-
-            if (!res.ok) {
-                throw new Error(`HTTP error! Status: ${res.status}`);
-            }
-            const data = await res.json();
-            console.log("Fetched Data:", data);
-        } catch (error) {
-            console.error("Error:", error);
-        }
-    }
     useEffect(() => {
-        fetchPosts();
+        fetchJobs().then(result => setJobs(result))
     }, []);
 
     const [mode, setMode] = useState("posts");
