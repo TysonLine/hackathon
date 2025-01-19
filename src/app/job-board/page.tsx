@@ -74,7 +74,7 @@ export default function JobBoard() {
       const { data: matched, error } = await supabase.rpc("match_jobs_for_candidate", {
         query_embedding: embedding,
         match_threshold: 0.5, // Adjust threshold as needed
-        match_count: 3,       // Fetch top 3 matches
+        match_count: 5,       // Fetch top 3 matches
       });
 
       if (error) {

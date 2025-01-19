@@ -17,7 +17,7 @@ export default function profile() {
     return (
         <div className="flex flex-col gap-4">
             <h1 className="text-black font-semibold text-4xl ">
-                Welcome {testUser.Name}!
+                Welcome {state.Name}!
             </h1>
             <div className="resumeSection  w-full flex flex-row justify-between items-start">
                 <div className="resumeSectionLeft flex flex-col gap-2 h-full w-1/2 justify-start flex-grow-1">

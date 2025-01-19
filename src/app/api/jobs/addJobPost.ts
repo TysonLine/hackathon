@@ -24,7 +24,7 @@ const supabase = createClient(url, privateKey);
 async function generateEmbedding(description: string): Promise<number[] | null> {
   if (!description) return null; // Skip jobs with no description
 
-  const apiUrl = 'http://localhost:3003/api/generate-embeddings';
+  const apiUrl = 'http://localhost:3000/api/generate-embeddings';
   try {
     const res = await fetch(apiUrl, {
       method: 'POST',

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import Card from "./components/card";
+import Card from "./components/Card";
 import { useAppContext } from "../context/AppContext";
 import Link from "next/link";
 
@@ -16,9 +16,9 @@ export default function Index() {
     } = useAppContext();
     // Handlers for the sign-in actions
     const handleUserSignIn = () => {
-        setUserName("DanielChen");
-        setName("DanielChen");
-        setEmail("danielchenschw@gmail.com");
+        setUserName("HappyJellybean1134");
+        setName("uottaHacker");
+        setEmail("studiousMan@gmail.com");
         setGender("Male");
         setDescription(
             "I am a software engineer with a passion for hackathons and innovative projects."
