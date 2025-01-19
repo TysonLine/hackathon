@@ -23,9 +23,6 @@ export default function employerViewLPosts(props: any) {
             <h1 className="text-xl font-bold mt-0 mb-6 text-gray-800">
                 My Job Postings
             </h1>
-            <button onClick={() => stateSetter("viewApp")}>
-                testButtonRemoveLater
-            </button>
             <div className="w-[50vw]  h-[70vh] bg-white overflow-y-scroll">
                 <table className="table w-full">
                     {/* head */}
