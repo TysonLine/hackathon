@@ -75,7 +75,7 @@ export default function Board({ className, jobs }: BoardProps) {
     <div className='w-full h-[75vh] flex flex-row shadow-md rounded-xl'>
         {/* left col */}
         <div className='w-3/5 bg-gray-50 p-4 overflow-y-auto flex flex-col'>
-            {jobs.map((job) => (
+            {jobs && jobs.length != 0 && jobs.map((job) => (
               <BoardPost 
                 key={job.id}
                 job={job}

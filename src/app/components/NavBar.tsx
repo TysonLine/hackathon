@@ -12,9 +12,9 @@ const NavBar: FC<NavBarProps> = ({ userType }) => {
         {/* Logo and User Type */}
         <div className="flex items-center">
           <Link href={userType=="student" ? "/job-board" : "/postings"} className="text-lg font-bold mr-4">Employ Me!</Link>
-          <span className="text-sm text-gray-600">
+          <Link href="/" className="text-sm text-gray-600">
             {userType === 'student' ? 'Student' : 'Employer'}
-          </span>
+          </Link>
         </div>
 
         {/* Center Links */}
