@@ -6,8 +6,11 @@ import Card from "../components/card";
 
 export default function Index() {
     return (
-        <div className="w-screen h-screen bg-gradient-to-br from-[#FF7621] to-[#FFAF02] flex justify-center items-center">
-            <Card className="flex flex-col justify-center items-center gap-6">
+        <div className="w-screen h-screen bg-gradient-to-br from-[#FF7621] to-[#FFAF02] flex gap-20 justify-center items-center">
+            <div className="transition-all duration-300 hover:scale-105 cursor-pointer bg-white p-6 rounded-2xl shadow-lg text-black hover:shadow-2xl">
+                <h1 className="font-bold text-6xl">🫠 Employ Me!</h1>
+            </div>
+            <Card className="flex flex-col justify-center items-center gap-6 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
                 <h1 className="text-3xl font-bold">New Account</h1>
                 <p>
                     Have an account?{" "}

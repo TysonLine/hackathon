@@ -46,7 +46,7 @@ export default function Index() {
             <div className="transition-all duration-300 hover:scale-105 cursor-pointer bg-white p-6 rounded-2xl shadow-lg text-black hover:shadow-2xl">
                 <h1 className="font-bold text-6xl">🫠 Employ Me!</h1>
             </div>
-            <Card className="flex flex-col justify-center items-center gap-6 transition-all duration-300 hover:scale-105  hoveer:shado-2xl">
+            <Card className="flex flex-col justify-center items-center gap-6 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
                 <h1 className="text-3xl font-bold">Sign In</h1>
                 <p>
                     Not registered yet?{" "}
