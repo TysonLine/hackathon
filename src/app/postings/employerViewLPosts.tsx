@@ -8,7 +8,7 @@ export default function employerViewLPosts(props: any) {
     const [posts, setPosts] = useState<JobPost[]>([
         {
             id: "1",
-            position: "Software Engineer",
+            job_title: "Software Engineer",
             company: "TechCorp",
             description: "Develop and maintain software applications.",
             location: "here",
@@ -16,7 +16,7 @@ export default function employerViewLPosts(props: any) {
         },
         {
             id: "2",
-            position: "Product Manager",
+            job_title: "Product Manager",
             company: "Innovatech",
             description: "Lead product development and strategy.",
             location: "here",
@@ -24,7 +24,7 @@ export default function employerViewLPosts(props: any) {
         },
         {
             id: "3",
-            position: "Data Scientist",
+            job_title: "Data Scientist",
             company: "DataGenix",
             description: "Analyze complex datasets to drive business insights.",
             location: "here",
@@ -32,7 +32,7 @@ export default function employerViewLPosts(props: any) {
         },
         {
             id: "4",
-            position: "Machine Learning Engineer",
+            job_title: "Machine Learning Engineer",
             company: "DataGenix",
             description:
                 "Use TensorFlow, Machine Learning, AI, RAG and Deep Learning stuff. Very AI Position yes",
