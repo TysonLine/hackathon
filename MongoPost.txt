@@ -1,0 +1,29 @@
+'use client';
+
+const MongoTest = () => {
+
+    // Define the clicked function
+    async function clicked() {
+        console.log('clicked');
+        const text = "Example Text"; // Replace with dynamic input if needed
+        try {
+            const res = await fetch('/api/MongoDB', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ text }),
+            });
+
+            const response = await res.json();
+            console.log('Response:', response); // Handle the response as needed
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+    return (
+        <button className="btn btn-primary" onClick={() => clicked()}>Submit</button>
+    )
+};
+
+export default MongoTest;
