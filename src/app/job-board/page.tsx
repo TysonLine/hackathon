@@ -41,29 +41,20 @@ export default function JobBoard() {
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
-  }; 
-
-  //
-  // filtered jobs needs to be updated
-  // const filteredJobs = searchTerm
-  //   ? jobs.filter((job) =>
-  //       job.position.toLowerCase().includes(searchTerm.toLowerCase())
-  //     )
-  //   : jobs;
+  };
 
   async function fetchCandidate() {
     try {
       const { data: candidate, error } = await supabase
         .from("candidates")
-        .select("*") // Replace "*" with specific columns if needed
-        .single(); // Ensures only one row is returned
-  
+        .select("*")
+        .single();
+
       if (error) {
         console.error("Error fetching candidate:", error.message);
         return null;
       }
-  
-   
+
       return candidate.embedding; 
     } catch (error) {
       console.error("Unexpected error fetching candidate:", error);
@@ -71,70 +62,70 @@ export default function JobBoard() {
     }
   }
 
-  
   async function matchJobsToUser() {
     try {
       // Fetch the candidate's embedding
       const embedding = await fetchCandidate();
-  
+
       if (!embedding) {
         console.error("No embedding found for candidate.");
         return;
       }
-  
+
       // Call the `match_jobs_for_candidate` RPC
       const { data: matched, error } = await supabase.rpc("match_jobs_for_candidate", {
         query_embedding: embedding,
         match_threshold: 0.5, // Adjust threshold as needed
         match_count: 3,       // Fetch top 3 matches
       });
-  
+
       if (error) {
         console.error("Error matching jobs:", error.message);
         return;
       }
-  
-      // Log the matched jobs
-      console.log("Matched Jobs:", matched);
-      setMatchedJobs(matched)
 
+      // Update the matchedJobs state and set personalized to true
+      console.log("Matched Jobs:", matched);
+      setMatchedJobs(matched);
+      setPersonalized(true);
     } catch (error) {
       console.error("Error in matchJobsToUser:", error);
     }
   }
-  
-    
 
-  return (<>
-    <NavBar userType="student" />
-    <div className="flex flex-col h-screen bg-orange-400 items-center">
-      <div className='w-[80vw] flex flex-col items-center'>
-        <div className='flex flex-row mt-20 mb-2 items-center gap-2' >
-          <input
-            type="text"
-            placeholder="Search jobs..."
-            className="input input-bordered"
-            value={searchTerm}
-            onChange={handleSearch}
-          />
+  function showAllJobs() {
+    setMatchedJobs([]); // Reset matchedJobs
+    setPersonalized(false); // Reset personalized state
+  }
 
+  return (
+    <>
+      <NavBar userType="student" />
+      <div className="flex flex-col h-screen bg-orange-400 items-center">
+        <div className='w-[80vw] flex flex-col items-center'>
+          <div className='flex flex-row mt-20 mb-2 items-center gap-2' >
+            <input
+              type="text"
+              placeholder="Search jobs..."
+              className="input input-bordered"
+              value={searchTerm}
+              onChange={handleSearch}
+            />
 
-          {/*Will take the only entry in Supabase and Match Jobs the best it can */}
-          <button onClick={() => {
-            
-            matchJobsToUser
-            setPersonalized(!personalized)
-          }
-          }  className='btn'>
-            Personalize
-          </button>
+            <button onClick={matchJobsToUser} className='btn'>
+              Personalize
+            </button>
+            <button onClick={showAllJobs} className='btn'>
+              All Jobs
+            </button>
+          </div>
+          
+          {/* Job Board */}
+          <Board jobs={matchedJobs.length > 0 ? matchedJobs : jobs} />
+
         </div>
-        
-        {/* Job Board */}
-        <Board jobs={matchedJobs.length > 0 && personalized ? matchedJobs: jobs} />
-
       </div>
-      
-    </div>
-  </>);
+    </>
+  );
 }
+
