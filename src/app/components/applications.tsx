@@ -9,7 +9,7 @@ const Applications = () => {
             id: "1",
             job: {
                 id: "1",
-                position: "Software Engineer",
+                job_title: "Software Engineer",
                 company: "TechCorp",
                 description: "Develop and maintain software applications.",
             },
@@ -21,7 +21,7 @@ const Applications = () => {
             id: "2",
             job: {
                 id: "2",
-                position: "Product Manager",
+                job_title: "Product Manager",
                 company: "Innovatech",
                 description: "Lead product development and strategy.",
             },
@@ -33,7 +33,7 @@ const Applications = () => {
             id: "3",
             job: {
                 id: "3",
-                position: "Data Scientist",
+                job_title: "Data Scientist",
                 company: "DataGenix",
                 description:
                     "Analyze complex datasets to drive business insights.",
@@ -46,7 +46,7 @@ const Applications = () => {
             id: "4",
             job: {
                 id: "4",
-                position: "Frontend Developer",
+                job_title: "Frontend Developer",
                 company: "WebWorks",
                 description: "Design and implement user interfaces.",
             },
@@ -58,7 +58,7 @@ const Applications = () => {
             id: "5",
             job: {
                 id: "5",
-                position: "Backend Developer",
+                job_title: "Backend Developer",
                 company: "CodeBase Inc.",
                 description: "Develop server-side applications and APIs.",
             },
@@ -70,7 +70,7 @@ const Applications = () => {
             id: "6",
             job: {
                 id: "6",
-                position: "UX Designer",
+                job_title: "UX Designer",
                 company: "Designify",
                 description:
                     "Enhance user experiences through innovative designs.",
@@ -83,7 +83,7 @@ const Applications = () => {
             id: "7",
             job: {
                 id: "7",
-                position: "DevOps Engineer",
+                job_title: "DevOps Engineer",
                 company: "CloudSync",
                 description:
                     "Optimize CI/CD pipelines and cloud infrastructure.",
@@ -96,7 +96,7 @@ const Applications = () => {
             id: "8",
             job: {
                 id: "8",
-                position: "AI Engineer",
+                job_title: "AI Engineer",
                 company: "AI Solutions",
                 description: "Develop cutting-edge machine learning models.",
             },
@@ -108,7 +108,7 @@ const Applications = () => {
             id: "9",
             job: {
                 id: "9",
-                position: "Marketing Analyst",
+                job_title: "Marketing Analyst",
                 company: "Marketify",
                 description: "Analyze market trends and create reports.",
             },
@@ -120,7 +120,7 @@ const Applications = () => {
             id: "10",
             job: {
                 id: "10",
-                position: "Cybersecurity Specialist",
+                job_title: "Cybersecurity Specialist",
                 company: "SecureNet",
                 description: "Ensure the security of digital infrastructure.",
             },

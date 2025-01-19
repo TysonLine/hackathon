@@ -1,13 +1,19 @@
 
 export type JobPost = {
     id: string;
-    position: string;
+    job_title: string;
     company: string;
     location: string;
     jobType: string;
     description: string;
+
+    applications?: Application[];
+    match: number | null;
+};
+
     applications: string[];
 }
+
 
 export type Application = {
     id: string;
