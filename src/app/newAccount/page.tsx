@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "../components/card";
 
-
 //todo: form validation for confirm password, passwords must match
 
 export default function Index() {
@@ -30,9 +29,11 @@ export default function Index() {
                     placeholder="Confirm Password"
                     className="input input-bordered w-full max-w-xs"
                 />
-                <button className="btn bg-primary hover:bg-secondary btn-wide">
-                    Create Account
-                </button>
+                <a href="../">
+                    <button className="btn bg-primary hover:bg-secondary btn-wide">
+                        Create Account
+                    </button>
+                </a>
             </Card>
         </div>
     );
