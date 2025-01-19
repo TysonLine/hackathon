@@ -61,8 +61,10 @@ const Applications = () => {
 
     return (
         <div className="overflow-y-scroll w-fit h-fit bg-white overflow-hidden">
-            <h1 className="text-xl font-bold mt-0 mb-4 text-gray-800">Applications</h1>
-            <div className="w-full h-[70vh] bg-white shadow-md overflow-y-scroll"> 
+            <h1 className="text-xl font-bold mt-0 mb-4 text-gray-800">
+                Applications
+            </h1>
+            <div className="w-full h-[70vh] bg-white shadow-md overflow-y-scroll">
                 <table className="table w-full">
                     {/* head */}
                     <thead>
@@ -79,25 +81,27 @@ const Applications = () => {
                         {apps
                             .filter((app) => app.user.name === state.Name)
                             .map((app) => (
-                            <tr key={app.id}>
-                                {jobs
-                                    .filter((job) => job.id === app.jobId)
-                                    .map((job) => (<>
-                                        <td>{job.company || "n/a"}</td>
-                                        <td>{job.job_title || "n/a"}</td>
-                                        <td>{job.location || "n/a"}</td>
-                                    </>))
-                                }
-                                
-                                <td>{app.date || "n/a"}</td>
-                                <td>{app.views || "n/a"}</td>
-                                <td>{app.status || "n/a"}</td>
-                            </tr>
-                        ))}
+                                <tr key={app.id}>
+                                    {jobs
+                                        .filter((job) => job.id === app.jobId)
+                                        .map((job) => (
+                                            <>
+                                                <td>{job.company || "n/a"}</td>
+                                                <td>
+                                                    {job.job_title || "n/a"}
+                                                </td>
+                                                <td>{job.location || "n/a"}</td>
+                                            </>
+                                        ))}
+
+                                    <td>{app.date || "n/a"}</td>
+                                    <td>{app.views || "n/a"}</td>
+                                    <td>{app.status || "n/a"}</td>
+                                </tr>
+                            ))}
                     </tbody>
                 </table>
             </div>
-            
         </div>
     );
 };

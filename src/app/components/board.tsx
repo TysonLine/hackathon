@@ -73,6 +73,7 @@ export default function Board({ className, jobs }: BoardProps) {
                     jobs.length != 0 &&
                     jobs.map((job) => (
                         <BoardPost
+                            id={job.id}
                             key={job.id}
                             job={job}
                             selected={selectedJob?.id === job.id}
