@@ -11,9 +11,7 @@ export type JobPost = {
     match: number | null;
 };
 
-    applications: string[];
-}
-
+  
 
 export type Application = {
     id: string;
