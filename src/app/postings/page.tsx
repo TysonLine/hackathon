@@ -7,6 +7,7 @@ import EmployerViewApplication from "./employerViewApplication";
 
 const page = () => {
     const [jobs, setJobs] = useState([]);
+    const [apps, setApps] = useState([]);
 
     async function fetchJobs() {
         try {
@@ -25,12 +26,33 @@ const page = () => {
             console.error("Error fetching data:", error);
         }
     }
+    async function fetchApps() {
+        try {
+            const res = await fetch("/api/applicationsAPI", {
+                method: "GET",
+            });
+
+            if (!res.ok) {
+                throw new Error(`HTTP error! Status: ${res.status}`);
+            }
+
+            const data = await res.json();
+            setApps(data);
+            console.log("Fetched apps:", data); // Handle the fetched data as needed
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
 
     useEffect(() => {
         fetchJobs();
+        setTimeout(() => {
+            fetchApps();
+        }, 1000);
     }, []);
 
     const [mode, setMode] = useState("posts");
+    const [selectedJob, setSelectedJob] = useState(null);
 
     return (
         <div className="w-screen flex h-screen flex-col">
@@ -40,11 +62,16 @@ const page = () => {
             <div className="absolute inset-0 flex flex-col items-center gap-4 justify-end shadow">
                 <div className="overflow-y-scroll w-fit h-max overflow-hidden shadow-md rounded-t-2xl">
                     {mode === "posts" ? (
-                        <EmployerViewLPosts stateSetter={setMode} jobs={jobs} />
+                        <EmployerViewLPosts
+                            stateSetter={setMode}
+                            selectedJobSetter={setSelectedJob}
+                            jobs={jobs}
+                        />
                     ) : null}
                     {mode === "viewAppList" ? (
                         <EmployerViewApplicationList
-                            applications={[]}
+                            applications={apps}
+                            selectedJob={selectedJob}
                             stateSetter={setMode}
                         />
                     ) : // use filter to see the applications that has this job id
