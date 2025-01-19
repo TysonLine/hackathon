@@ -87,6 +87,9 @@ export async function addJobPost(newJob: JobPost) {
     console.error("Error adding job to MongoDB:", mongoError);
   } finally {
     await client.close();
-    console.log("MongoDB connection closed.");
-  }
+      console.log("MongoDB connection closed.");
+      return { success: true };
+    }
+    return { success: false, error: "Error" };
+    
 }
