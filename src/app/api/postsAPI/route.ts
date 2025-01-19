@@ -1,44 +1,34 @@
-import db from '../../../utils/db.js'; // Adjust the path to match your project structure
-import { NextResponse } from 'next/server';
+import db from "../../../utils/db.js"; // Adjust the path to match your project structure
+import { NextResponse } from "next/server";
 
 export async function GET() {
     try {
         await db.connectDB(); // Initialize the connection
         const client = db.client; // Access MongoDB client
-        const collection = client.db('EmployMe').collection('users');
+        const collection = client.db("EmployMe").collection("JobPosts");
 
         // Fetch documents from the collection
         const data = await collection.find({}).toArray();
-        console.log('Fetched documents:', data);
+        console.log("Fetched documents:", data);
 
         // Return the fetched data
         return NextResponse.json(data);
     } catch (err) {
-        console.error('Error:', err);
+        console.error("Error:", err);
         return NextResponse.json(
-            { error: 'An error occurred while fetching data.' },
+            { error: "An error occurred while fetching data." },
             { status: 500 }
         );
     } finally {
         // Close the client connection when done
         try {
             await db.client.close();
-            console.log('MongoDB connection closed');
+            console.log("MongoDB connection closed");
         } catch (closeError) {
-            console.error('Error closing MongoDB connection:', closeError);
+            console.error("Error closing MongoDB connection:", closeError);
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
 
 /*
 import db from '../../../../utils/db.js'; // Adjust the path based on your project structure
