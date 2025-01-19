@@ -66,6 +66,7 @@ const page = () => {
                             stateSetter={setMode}
                             selectedJobSetter={setSelectedJob}
                             jobs={jobs}
+                            applications={apps}
                         />
                     ) : null}
                     {mode === "viewAppList" ? (

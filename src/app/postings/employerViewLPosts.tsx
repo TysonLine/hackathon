@@ -57,7 +57,12 @@ export default function employerViewLPosts(props: any) {
                                                 stateSetter("viewAppList");
                                                 selectedJobSetter(post);
                                             }}>
-                                            {post.applications?.length || "0"}
+                                            {
+                                                props.applications.filter(
+                                                    (app) =>
+                                                        app.jobId === post.id
+                                                ).length
+                                            }
                                         </button>
                                     </td>
                                     <td>
