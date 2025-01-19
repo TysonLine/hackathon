@@ -5,6 +5,7 @@ import { useAppContext } from "../../context/AppContext";
 
 export default function employerViewLPosts(props: any) {
     const stateSetter = props.stateSetter;
+    const selectedJobSetter = props.selectedJobSetter;
 
     const jobs = props.jobs;
     const {
@@ -52,9 +53,10 @@ export default function employerViewLPosts(props: any) {
                                     <td>
                                         <button
                                             className={"btn btn-primary"}
-                                            onClick={() =>
-                                                stateSetter("viewAppList")
-                                            }>
+                                            onClick={() => {
+                                                stateSetter("viewAppList");
+                                                selectedJobSetter(post);
+                                            }}>
                                             {post.applications?.length || "0"}
                                         </button>
                                     </td>
