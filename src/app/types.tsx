@@ -1,4 +1,3 @@
-
 export type JobPost = {
     id: string;
     position: string;
@@ -7,12 +6,12 @@ export type JobPost = {
     jobType?: string;
     description: string;
     applications?: Application[];
-}
+};
 
 export type Application = {
     id: string;
-    job: JobPost;
+    jobId: number;
     date: string;
     views: number;
     status: string;
-}
+};

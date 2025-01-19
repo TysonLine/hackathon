@@ -1,4 +1,4 @@
-"use client"
+"use client";
 // src/context/AppContext.tsx
 
 import React, { createContext, useState, ReactNode, useContext } from "react";
@@ -12,8 +12,7 @@ interface AppState {
     Email: string;
     gender: string;
     isEmployer: boolean;
-    applications: Application[];
-    postings: JobPost[];
+    description: string;
     resume: string;
 }
 
@@ -26,8 +25,7 @@ interface AppContextType {
     setEmail: (email: string) => void;
     setGender: (gender: string) => void;
     setIsEmployer: (isEmployer: boolean) => void;
-    setApplications: (applications: Application[]) => void;
-    setPostings: (postings: JobPost[]) => void;
+    setDescription: (description: string) => void;
     setResume: (resume: string) => void;
 }
 
@@ -45,8 +43,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
         Email: "",
         gender: "",
         isEmployer: false,
-        applications: [],
-        postings: [],
+        description: "",
         resume: "",
     });
 
@@ -62,10 +59,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
         setState((prev) => ({ ...prev, gender }));
     const setIsEmployer = (isEmployer: boolean) =>
         setState((prev) => ({ ...prev, isEmployer }));
-    const setApplications = (applications: Application[]) =>
-        setState((prev) => ({ ...prev, applications }));
-    const setPostings = (postings: JobPost[]) =>
-        setState((prev) => ({ ...prev, postings }));
+    const setDescription = (description: string) =>
+        setState((prev) => ({ ...prev, description }));
     const setResume = (resume: string) =>
         setState((prev) => ({ ...prev, resume }));
 
@@ -79,8 +74,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
                 setEmail,
                 setGender,
                 setIsEmployer,
-                setApplications,
-                setPostings,
+                setDescription,
                 setResume,
             }}>
             {children}
