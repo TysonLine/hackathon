@@ -14,6 +14,8 @@ export default function employerViewApplicationList(props: AppList) {
                 Applicant list
             </h1>
 
+            
+
             <div className="w-[50vw] h-[70vh] bg-white overflow-y-scroll"></div>
         </div>
     );
