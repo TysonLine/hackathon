@@ -1,4 +1,5 @@
-import { FC, useState } from 'react'
+"use client"
+import { FC, useState, useContext } from 'react'
 import { JobPost } from '../types';
 import BoardPost from './boardPost';
 import { useAppContext } from '@/context/AppContext';
@@ -8,12 +9,21 @@ interface BoardProps {
   jobs: JobPost[];
 }
 
-const Board: FC<BoardProps> = ({ className, jobs  }) => {
+export default function Board({ className, jobs }: BoardProps) {
+  const {
+    state,
+    setUserName,
+    setName,
+    setEmail,
+    setGender,
+    setResume,
+    setDescription,
+} = useAppContext();
   const [selectedJob, setSelectedJob] = useState<JobPost | null>(null);
-  const { state } = useAppContext();
+  
 
   const handleApply = async (jobId: string) => {
-    if (!useAppContext().state.Name) {
+    if (!state.Name) {
       alert('You need to log in to apply for jobs.');
       return;
     }
@@ -101,4 +111,3 @@ const Board: FC<BoardProps> = ({ className, jobs  }) => {
   )
 }
 
-export default Board
