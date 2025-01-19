@@ -2,7 +2,6 @@
 // src/context/AppContext.tsx
 
 import React, { createContext, useState, ReactNode, useContext } from "react";
-import { JobPost, Application } from "@/app/types";
 
 // Define types for your context state
 interface AppState {
