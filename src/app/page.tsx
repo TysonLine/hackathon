@@ -47,9 +47,9 @@ export default function Index() {
                 <h1 className="text-3xl font-bold">Sign In</h1>
                 <p>
                     Not registered yet?{" "}
-                    <a className="underline text-secondary" href="/newAccount">
+                    <Link className="underline text-secondary" href="/newAccount">
                         Sign Up
-                    </a>
+                    </Link>
                 </p>
                 <input
                     type="text"

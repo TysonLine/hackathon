@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
-import Application from "../types";
+import { Application } from "../types";
 import Groq from "groq-sdk";
 import PdfViewer from "../components/pdfViewer";
 
@@ -20,6 +20,28 @@ const supabase = createClient(
 export default function EmployerViewPosting(props: Application) {
     const [resumeText, setResumeText] = useState<string | null>(null);
     const [summary, setSummary] = useState<string | null>(null);
+    const [status, setStatus] = useState<string>("Pending");
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+    
+        try {
+          const response = await fetch('/api/update-status', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(props.id),
+          });
+    
+          if (!response.ok) {
+            setStatus('Failed to update status');
+          }
+        } catch (error) {
+          console.error('Error updating status:', error);
+          setStatus('An error occurred.');
+        }
+      };
 
     // Function to fetch the candidate's resume_text
     async function fetchCandidate() {
@@ -103,10 +125,32 @@ export default function EmployerViewPosting(props: Application) {
                         )
                     )}
                 </div>
+
+                {/* user info */}
+                <p className="font-semibold">{props.user.name}</p>
+                <p>{props.user.email}</p>
+                <p>{props.date}</p>
+                <p>{props.user.gender}</p>
+                <p>{props.user.description}</p>
+
+                {/* update status */}
+                <form className="flex flex-row gap-4" onSubmit={handleSubmit}>
+                    <select
+                        value={status}
+                        onChange={(e) => setStatus(e.target.value)}
+                        className="select select-bordered"
+                    >
+                        <option value="Pending">Pending</option>
+                        <option value="Interview">Interview</option>
+                        <option value="Accepted">Accepted</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                    <button type="submit" className="btn btn-primary">Update</button>
+                </form>
                 <button
-                    className={"btn btn-primary"}
+                    className={"btn btn-secondary"}
                     onClick={() => props.stateSetter("viewAppList")}>
-                    back
+                    Back
                 </button>
             </div>
         </div>

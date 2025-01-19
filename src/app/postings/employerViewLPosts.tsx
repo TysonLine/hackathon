@@ -44,7 +44,7 @@ export default function employerViewLPosts(props: any) {
                                     key={post.id}
                                     className="hover:bg-gray-50 transition-all duration-200">
                                     <td>{post.company}</td>
-                                    <td>{post.position}</td>
+                                    <td>{post.job_title}</td>
                                     <td>{post.location || "n/a"}</td>
                                     <td>{post.jobType || "n/a"}</td>
                                     <td>

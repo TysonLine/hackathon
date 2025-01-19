@@ -11,6 +11,26 @@ export default function employerViewApplicationList(props: AppList) {
     const apps = props.applications;
     const selectedJob = props.selectedJob;
 
+    const handleViewDetails = async (appId: string) => {
+        props.stateSetter("viewApp")
+        try {
+            const res = await fetch(`/api/incrementViews`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ appId }),
+            });
+
+            if (!res.ok) {
+                throw new Error(`HTTP error! Status: ${res.status}`);
+            }
+
+        } catch (error) {
+            console.error("Error incrementing views:", error);
+        }
+    };
+
     return (
         <div className="overflow-y-scroll w-fit h-max shadow-md bg-white overflow-hidden p-6 rounded-t-2xl">
             <div className="w-[50vw] h-[70vh] bg-white overflow-y-scroll">
@@ -21,10 +41,10 @@ export default function employerViewApplicationList(props: AppList) {
                     {/* head */}
                     <thead>
                         <tr>
-                            <th>date</th>
-                            <th>user name</th>
-                            <th>views</th>
-                            <th>status</th>
+                            <th>Date</th>
+                            <th>Username</th>
+                            <th>Views</th>
+                            <th>Status</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -43,9 +63,9 @@ export default function employerViewApplicationList(props: AppList) {
                                         <button
                                             className={"btn btn-primary"}
                                             onClick={() =>
-                                                props.stateSetter("viewApp")
+                                                handleViewDetails(app.id)
                                             }>
-                                            view details
+                                            Details
                                         </button>
                                     </td>
                                 </tr>

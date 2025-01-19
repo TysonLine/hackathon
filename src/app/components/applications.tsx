@@ -77,7 +77,7 @@ const Applications = () => {
                     </thead>
                     <tbody className="text-gray-700">
                         {apps
-                            
+                            .filter((app) => app.user.name === state.Name)
                             .map((app) => (
                             <tr key={app.id}>
                                 {jobs

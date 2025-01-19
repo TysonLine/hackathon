@@ -37,8 +37,6 @@ export default function JobBoard() {
     fetchJobs();
   }, []);
 
-  console.log('jobs:', jobs);
-
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
   };

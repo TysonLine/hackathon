@@ -62,7 +62,7 @@ const AddJob = () => {
                 <div className="overflow-y-scroll w-[40vw] h-[75vh] shadow-md bg-white overflow-hidden p-6 rounded-t-2xl">
                     <h1 className="text-3xl font-bold text-orange-500 mb-4">Add a New Job</h1>
                     <form
-                        className="bg-white flex flex-col space-y-4"
+                        className="bg-white flex flex-col space-y-4 text-gray-700"
                         onSubmit={handleSubmit}
                     >
                         <input

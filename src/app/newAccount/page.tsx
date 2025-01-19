@@ -1,5 +1,6 @@
 import React from "react";
-import Card from "../components/Card";
+import Link from "next/link";
+import Card from "../components/card";
 
 //todo: form validation for confirm password, passwords must match
 
@@ -10,9 +11,9 @@ export default function Index() {
                 <h1 className="text-3xl font-bold">New Account</h1>
                 <p>
                     Have an account?{" "}
-                    <a className="underline text-secondary" href="/login">
+                    <Link className="underline text-secondary" href="/">
                         Log in
-                    </a>
+                    </Link>
                 </p>
                 <input
                     type="text"
