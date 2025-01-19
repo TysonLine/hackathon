@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import Card from "./components/card";
+import Card from "./components/Card";
 import { useAppContext } from "../context/AppContext";
 import Link from "next/link";
 

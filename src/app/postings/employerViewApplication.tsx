@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
-import { Application } from "../types";
+import Application from "../types";
 import Groq from "groq-sdk";
 import PdfViewer from "../components/pdfViewer";
 
@@ -20,38 +20,6 @@ const supabase = createClient(
 export default function EmployerViewPosting(props) {
     const [resumeText, setResumeText] = useState<string | null>(null);
     const [summary, setSummary] = useState<string | null>(null);
-    const [status, setStatus] = useState<string>("Pending");
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-    
-        const handleStatusChange = async (event) => {
-            const newStatus = event.target.value;
-            setStatus(newStatus);
-    
-            try {
-                const res = await fetch(`/api/update-status`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ appId: props.app.id, newStatus }),
-                });
-    
-                if (!res.ok) {
-                    throw new Error(`HTTP error! Status: ${res.status}`);
-                }
-    
-                const data = await res.json();
-                if (!data.success) {
-                    throw new Error(data.error);
-                }
-    
-                console.log("Status updated successfully:", data.application);
-            } catch (error) {
-                console.error("Error updating status:", error);
-            }
-        };
 
     // Function to fetch the candidate's resume_text
     async function fetchCandidate() {
@@ -135,32 +103,10 @@ export default function EmployerViewPosting(props) {
                         )
                     )}
                 </div>
-
-                {/* user info */}
-                <p className="font-semibold">{props.app.user.name}</p>
-                <p>{props.app.user.email}</p>
-                <p>{props.app.date}</p>
-                <p>{props.app.user.gender}</p>
-                <p>{props.app.user.description}</p>
-
-                {/* update status */}
-                <form className="flex flex-row gap-4" onSubmit={handleSubmit}>
-                    <select
-                        value={status}
-                        onChange={(e) => setStatus(e.target.value)}
-                        className="select select-bordered"
-                    >
-                        <option value="Pending">Pending</option>
-                        <option value="Interview">Interview</option>
-                        <option value="Accepted">Accepted</option>
-                        <option value="Rejected">Rejected</option>
-                    </select>
-                    <button type="submit" className="btn btn-primary">Update</button>
-                </form>
                 <button
-                    className={"btn btn-secondary"}
+                    className={"btn btn-primary"}
                     onClick={() => props.stateSetter("viewAppList")}>
-                    Back
+                    back
                 </button>
             </div>
         </div>

@@ -1,75 +1,69 @@
-"use client"
-import { FC, useState, useContext } from 'react'
-import { JobPost } from '../types';
-import BoardPost from './boardPost';
-import { useAppContext } from '@/context/AppContext';
+"use client";
+import { FC, useState, useContext } from "react";
+import { Application, JobPost, User } from "../types";
+import BoardPost from "./boardPost";
+import { useAppContext } from "@/context/AppContext";
 
 interface BoardProps {
-  className?: string;
-  jobs: JobPost[];
+    className?: string;
+    jobs: JobPost[];
 }
 
 export default function Board({ className, jobs }: BoardProps) {
-  const {
-    state,
-    setUserName,
-    setName,
-    setEmail,
-    setGender,
-    setResume,
-    setDescription,
-} = useAppContext();
-  const [selectedJob, setSelectedJob] = useState<JobPost | null>(null);
-  
+    const {
+        state,
+        setUserName,
+        setName,
+        setEmail,
+        setGender,
+        setResume,
+        setDescription,
+    } = useAppContext();
+    const [selectedJob, setSelectedJob] = useState<JobPost | null>(null);
 
-  const handleApply = async (jobId: string) => {
-    if (!state.Name) {
-      alert('You need to log in to apply for jobs.');
-      return;
-    }
-
-    const user = {
-      id: state.userName,
-      name: state.Name,
-      email: state.Email,
-      gender: state.gender,
-      isEmployer: state.isEmployer,
-      description: state.description,
-      resume: state.resume,
-    };
-
-    const newApplication = {
-      id: crypto.randomUUID(),
-      jobId: jobId,
-      date: new Date().toISOString(),
-      views: 0,
-      status: 'Pending',
-      user,
-    };
-
-    try {
-      const response = await fetch('/api/apply-to-job', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newApplication),
-      });
-
-      if (response.ok) {
-        const { success } = await response.json();
-        if (success) {
-          alert('Application submitted successfully!');
-        } else {
-          alert('Failed to submit the application.');
+    const handleApply = async (jobId: string) => {
+        alert("Job Applied!");
+        if (!state.Name) {
+            alert("You need to log in to apply for jobs.");
+            return;
         }
-      } else {
-        alert('Error occurred while applying for the job.');
-      }
-    } catch (error) {
-      console.error('Error applying for job:', error);
-    }
-  };
+
+        const user: User = {
+            id: state.userName,
+            name: state.Name,
+            email: state.Email,
+            gender: state.gender,
+            isEmployer: state.isEmployer,
+            description: state.description,
+            resume: state.resume,
+        };
+
+        const newApplication: Application = {
+            id: crypto.randomUUID(),
+            jobId: jobId,
+            date: new Date().toISOString(),
+            views: 0,
+            status: "Pending",
+            user: user,
+        };
+
+        try {
+            const response = await fetch("/api/apply-to-job", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newApplication),
+            });
+
+            if (response.ok) {
+                const { success } = await response.json();
+            } else {
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
 
   return (
     <div className='w-full h-[75vh] flex flex-row shadow-md rounded-2xl'>
@@ -112,8 +106,6 @@ export default function Board({ className, jobs }: BoardProps) {
             <p className="text-gray-500">Select a job to view details.</p>
           )}
         </div>
-        
-    </div>
-  )
+      </div>
+    );
 }
-
