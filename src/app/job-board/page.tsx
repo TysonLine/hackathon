@@ -120,13 +120,18 @@ export default function JobBoard() {
 
 
           {/*Will take the only entry in Supabase and Match Jobs the best it can */}
-          <button onClick={matchJobsToUser}  className='btn'>
+          <button onClick={() => {
+            
+            matchJobsToUser
+            setPersonalized(!personalized)
+          }
+          }  className='btn'>
             Personalize
           </button>
         </div>
         
         {/* Job Board */}
-        <Board jobs={matchedJobs.length > 0 ? matchedJobs: jobs} />
+        <Board jobs={matchedJobs.length > 0 && personalized ? matchedJobs: jobs} />
 
       </div>
       
