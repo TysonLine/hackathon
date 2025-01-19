@@ -7,67 +7,123 @@ import { JobPost } from '../types';
 import Board from '../components/board';
 import NavBar from '../components/NavBar';
 
+import { createClient } from '@supabase/supabase-js';
+
+// Initialize Supabase client
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_API_KEY!
+);
+
+
 export default function JobBoard() {
+  const [matchedJobs, setMatchedJobs] = useState<JobPost[]>([]);
+
+
+
+  const [personalized, setPersonalized] = useState<boolean>(false);
+
+  const [searchTerm, setSearchTerm] = useState<string>('');
+
+ 
   const [jobs, setJobs] = useState<JobPost[]>([
     {
       id: '1',
-      position: 'Software Engineer',
+      job_title: 'Software Engineer',
       company: 'TechCorp',
       description: 'Develop and maintain software applications.',
+      match: null
+
     },
     {
       id: '2',
-      position: 'Product Manager',
+      job_title: 'Product Manager',
       company: 'Innovatech',
       description: 'Lead product development and strategy.',
+      match: null
     },
     {
       id: '3',
-      position: 'Data Scientist',
+      job_title: 'Data Scientist',
       company: 'DataGenix',
       description: 'Analyze complex datasets to drive business insights.',
+      match: null
     },
     {
       id: '4',
-      position: 'Machine Learning Engineer',
+      job_title: 'Machine Learning Engineer',
       company: 'DataGenix',
       description: 'Use TensorFlow, Machine Learning, AI, RAG and Deep Learning stuff. Very AI Position yes',
+      match: null
     },
   ]);
 
   
 
-
-
-  const [searchTerm, setSearchTerm] = useState<string>('');
-
-  {/*useEffect(() => {
-    // Fetch jobs from MongoDB Atlas via API route
-    axios.get<JobPost[]>('/api/jobs').then((response) => {
-      setJobs(response.data);
-    });
-
-    // Subscribe to Solace topic for real-time updates
-    const solaceClient = new SolaceClient('YOUR_TOPIC_HERE');
-    solaceClient.onMessage((message: JobPost) => {
-      setJobs((prevJobs) => [message, ...prevJobs]);
-    });
-
-    return () => solaceClient.disconnect();
-  }, []); */}
-
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
   }; 
 
-  // 
+  //
   // filtered jobs needs to be updated
-  const filteredJobs = searchTerm
-    ? jobs.filter((job) =>
-        job.position.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    : jobs;
+  // const filteredJobs = searchTerm
+  //   ? jobs.filter((job) =>
+  //       job.position.toLowerCase().includes(searchTerm.toLowerCase())
+  //     )
+  //   : jobs;
 
+  async function fetchCandidate() {
+    try {
+      const { data: candidate, error } = await supabase
+        .from("candidates")
+        .select("*") // Replace "*" with specific columns if needed
+        .single(); // Ensures only one row is returned
+  
+      if (error) {
+        console.error("Error fetching candidate:", error.message);
+        return null;
+      }
+  
+   
+      return candidate.embedding; 
+    } catch (error) {
+      console.error("Unexpected error fetching candidate:", error);
+      return null;
+    }
+  }
+
+  
+  async function matchJobsToUser() {
+    try {
+      // Fetch the candidate's embedding
+      const embedding = await fetchCandidate();
+  
+      if (!embedding) {
+        console.error("No embedding found for candidate.");
+        return;
+      }
+  
+      // Call the `match_jobs_for_candidate` RPC
+      const { data: matched, error } = await supabase.rpc("match_jobs_for_candidate", {
+        query_embedding: embedding,
+        match_threshold: 0.5, // Adjust threshold as needed
+        match_count: 3,       // Fetch top 3 matches
+      });
+  
+      if (error) {
+        console.error("Error matching jobs:", error.message);
+        return;
+      }
+  
+      // Log the matched jobs
+      console.log("Matched Jobs:", matched);
+      setMatchedJobs(matched)
+
+    } catch (error) {
+      console.error("Error in matchJobsToUser:", error);
+    }
+  }
+  
     
 
   return (<>
@@ -82,13 +138,16 @@ export default function JobBoard() {
             value={searchTerm}
             onChange={handleSearch}
           />
-          <button className='btn'>
+
+
+          {/*Will take the only entry in Supabase and Match Jobs the best it can */}
+          <button onClick={matchJobsToUser}  className='btn'>
             Personalize
           </button>
         </div>
         
         {/* Job Board */}
-        <Board jobs={filteredJobs} />
+        <Board jobs={matchedJobs.length > 0 ? matchedJobs: jobs} />
 
       </div>
       

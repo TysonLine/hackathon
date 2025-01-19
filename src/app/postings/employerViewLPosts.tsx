@@ -5,12 +5,17 @@ import { useState } from "react";
 export default function employerViewLPosts(props: any) {
     const stateSetter = props.stateSetter;
 
+
     const jobs = props.jobs;
+
     return (
         <div className="overflow-y-scroll w-fit h-max shadow-md bg-white overflow-hidden p-6 rounded-t-2xl">
             <h1 className="text-xl font-bold mt-0 mb-6 text-gray-800">
                 My Job Postings
             </h1>
+            <button onClick={() =>
+                                            stateSetter("viewApp")
+                                        }>testButtonRemoveLater</button>
             <div className="w-[50vw]  h-[70vh] bg-white overflow-y-scroll">
                 <table className="table w-full">
                     {/* head */}

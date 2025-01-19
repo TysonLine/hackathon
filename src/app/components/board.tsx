@@ -28,9 +28,14 @@ const Board: FC<BoardProps> = ({ className, jobs  }) => {
         <div className='w-full bg-white p-6'>
           {selectedJob ? (
             <div className='flex flex-col gap-2'>
-              <h1 className="text-gray-700 text-2xl font-bold">{selectedJob.position}</h1>
+              <h1 className="text-gray-700 text-2xl font-bold">{selectedJob.job_title}</h1>
               <h2 className="text-gray-600 text-xl">{selectedJob.company}</h2>
-              <p className="text-gray-400 text-xs">job id: {selectedJob.id}</p>
+            <p className="text-gray-400 text-xs">job id: {selectedJob.id}</p>
+            {selectedJob.match != null && (
+              <p className='text-gray-400 text-xs'>
+                Similarity Score: {selectedJob.match.toFixed(2)} {/* Format as needed */}
+              </p>
+            )}
               <p className="text-gray-600 my-4">{selectedJob.description}</p>
               <button className="btn btn-primary">
                 Apply

@@ -17,7 +17,7 @@ const BoardPost: FC<BoardPostProps> = ({ job, selected, className, setSelectedJo
     }`}
     onClick={() => setSelectedJob(job)}
   >
-    <h3 className="text-gray-600 font-semibold">{job.position}</h3>
+    <h3 className="text-gray-600 font-semibold">{job.job_title}</h3>
     <p className='text-gray-400 text-sm'>{job.company}</p>
   </div>
   )
