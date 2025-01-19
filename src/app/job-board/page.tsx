@@ -29,7 +29,6 @@ export default function JobBoard() {
         const data = await response.json();
         setJobs(data);
         console.log('Fetched job posts:', data);
-        console.log('jobs:', jobs);
       } catch (error) {
         console.error('Error fetching job posts:', error);
       }
@@ -37,6 +36,8 @@ export default function JobBoard() {
 
     fetchJobs();
   }, []);
+
+  console.log('jobs:', jobs);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
