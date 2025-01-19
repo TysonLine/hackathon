@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect } from "react";
+import Card from "./components/card";
 import { useAppContext } from "../context/AppContext";
 import Link from "next/link";
-import Card from "./components/card";
 
 export default function Index() {
     const {
