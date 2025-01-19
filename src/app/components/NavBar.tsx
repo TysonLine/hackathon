@@ -10,7 +10,7 @@ const NavBar: FC<NavBarProps> = ({ userType }) => {
       <nav className="max-w-screen min-w-screen flex items-center justify-between bg-white p-2 px-4 shadow-md text-gray-700 relative z-50">
         {/* Logo and User Type */}
         <div className="flex items-center">
-          <a href="/" className="text-lg font-bold mr-4">Employ Me!</a>
+          <a href={userType=="student" ? "/job-board" : "/postings"} className="text-lg font-bold mr-4">Employ Me!</a>
           <span className="text-sm text-gray-600">
             {userType === 'student' ? 'Student' : 'Employer'}
           </span>
@@ -21,7 +21,6 @@ const NavBar: FC<NavBarProps> = ({ userType }) => {
           {userType === 'student' ? (
             <>
               <a href="/job-board" className="mx-2">Job Board</a>
-              <a href="/applications" className="mx-2">Applications</a>
             </>
           ) : (
             <>
