@@ -4,28 +4,6 @@ import NavBar from "../components/NavBar";
 import { Application, JobPost } from "../types";
 
 const Applications = () => {
-    // pages/job-board.tsx
-    const [jobs, setJobs] = useState<JobPost[]>([
-        {
-            id: "1",
-            position: "Software Engineer",
-            company: "TechCorp",
-            description: "Develop and maintain software applications.",
-        },
-        {
-            id: "2",
-            position: "Product Manager",
-            company: "Innovatech",
-            description: "Lead product development and strategy.",
-        },
-        {
-            id: "3",
-            position: "Data Scientist",
-            company: "DataGenix",
-            description: "Analyze complex datasets to drive business insights.",
-        },
-    ]);
-
     const [applications, setApplications] = useState<Application[]>([
         {
             id: "1",

@@ -6,6 +6,7 @@ export type JobPost = {
     location?: string;
     jobType?: string;
     description: string;
+    applications?: Application[];
 }
 
 export type Application = {
