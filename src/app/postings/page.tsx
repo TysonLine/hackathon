@@ -43,10 +43,15 @@ const page = () => {
                         <EmployerViewLPosts stateSetter={setMode} jobs={jobs} />
                     ) : null}
                     {mode === "viewAppList" ? (
-                        <EmployerViewApplicationList applications={[]} />
+                        <EmployerViewApplicationList
+                            applications={[]}
+                            stateSetter={setMode}
+                        />
                     ) : // use filter to see the applications that has this job id
                     null}
-                    {mode === "viewApp" ? <EmployerViewApplication /> : null}
+                    {mode === "viewApp" ? (
+                        <EmployerViewApplication stateSetter={setMode} />
+                    ) : null}
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@ import { Application } from "../types";
 
 type AppList = {
     applications: Application[];
+    stateSetter: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export default function employerViewApplicationList(props: AppList) {
@@ -15,6 +16,11 @@ export default function employerViewApplicationList(props: AppList) {
             </h1>
 
             <div className="w-[50vw] h-[70vh] bg-white overflow-y-scroll"></div>
+            <button
+                className={"btn btn-primary"}
+                onClick={() => props.stateSetter("posts")}>
+                back
+            </button>
         </div>
     );
 }
