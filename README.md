@@ -41,10 +41,13 @@ bun dev
 
 ### 🤝 Contributors
 **Daniel Chen**
-    Frontend, API Calls
+Frontend, API Calls
+
 **Harrison Johns**
-    Frontend, UI/UX, API Calls
+Frontend, UI/UX, API Calls
+
 **Ansh Kakkar**
-    Machine Learning
+Machine Learning
+
 **Tyson Line**
-    Backend: Databases, API
+Backend: Databases, API
