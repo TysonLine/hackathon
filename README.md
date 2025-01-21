@@ -47,7 +47,7 @@ Frontend, API Calls
 Frontend, UI/UX, API Calls
 
 **Ansh Kakkar**
-Machine Learning
+Generative AI, Vector Database, API Calls
 
 **Tyson Line**
 Backend: Databases, API
